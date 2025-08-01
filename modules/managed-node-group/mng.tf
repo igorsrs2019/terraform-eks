@@ -11,9 +11,6 @@ resource "aws_eks_node_group" "eks_mgn_node_group" {
 
 
 
-
-
-
   tags = merge(
     var.tags,
     {
