@@ -1,14 +1,26 @@
 resource "aws_eks_node_group" "eks_mgn_node_group" {
   cluster_name    = var.cluster_name
   node_group_name = "${var.project_name}-nodegroup"
+  instance_types  = ["t3.micro"]
+  capacity_type   = "SPOT"
   node_role_arn   = aws_iam_role.eks_mng_role.arn
   subnet_ids = [
     var.subnet_private_1a,
     var.subnet_private_1b
   ]
 
-  tags = var.tags
 
+
+
+
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.project_name}-nodegroup"
+
+    }
+  )
   scaling_config {
     desired_size = 1
     max_size     = 1

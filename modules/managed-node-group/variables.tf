@@ -27,3 +27,24 @@ variable "cluster_name" {
   type        = string
   description = "EKS cluster name to create MGN"
 }
+/*
+variable "instance_type" {
+  type        = string
+  description = "Type of instance in Node"
+}
+
+
+
+
+variable "capacity_type" {
+  type        = string
+  description = "Capacity type Spot/Demand"
+}
+
+
+variable "ami_type" {
+  type        = string
+  description = "Type of S.O"
+}
+*/
+

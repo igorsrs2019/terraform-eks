@@ -22,11 +22,16 @@ module "eks_managed_node_group" {
   subnet_private_1a = module.eks_network.subnet_priv_1a
   subnet_private_1b = module.eks_network.subnet_priv_1b
   tags              = local.tags
+  /*instance_type     = var.instance_type
+  ami_type          = var.ami_type
+  capacity_type     = var.capacity_type
+*/
+
 
 }
 
 module "eks_aws_load_balancer_controller" {
-  source       = "./module/aws-load-balancer-controler"
+  source       = "./modules/aws-load-balancer-controller"
   project_name = var.project_name
   tags         = local.tags
 }
