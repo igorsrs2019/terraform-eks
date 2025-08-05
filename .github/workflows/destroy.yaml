@@ -1,11 +1,11 @@
-name: Terraform Pipeline
+name: Terraform Destroy
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch: # 
 
 jobs:
-  terraform:
-    name: Terraform Workflow
+  terraform-destroy:
+    name: Destroy Infrastructure
     runs-on: ubuntu-latest
 
     env:
@@ -13,7 +13,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     steps:
-      - name: Checkout source code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Install Terraform
@@ -24,16 +24,10 @@ jobs:
       - name: Terraform initialization
         run: terraform init
 
-      - name: Format and Validate
-        run: terraform fmt && terraform validate
-
-      - name: Run Terraform Plan
+      - name: Destroy infrastructure
         run: |
-          terraform plan -out=tfplan \
+          terraform destroy -auto-approve \
             -var='cidr_block=10.0.0.0/16' \
             -var='project_name=my-project' \
             -var='region=us-east-1' \
             -var='tags={ Department = "DevOps", Organization = "Infrastructure and Operations", Project = "EKS", Environment = "Development" }'
-
-      - name: Apply Terraform Apply
-        run: terraform apply -auto-approve tfplan
