@@ -1,39 +1,39 @@
-name: Terraform Cluster EKS
+name: Terraform Action
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Escolha a ação do Terraform'
+        required: true
+        default: apply
+        type: choice
+        options:
+          - apply
+          - destroy
 
 jobs:
   terraform:
-    name: Workflow Terraform 
     runs-on: ubuntu-latest
-
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
     steps:
-      - name: Checkout source code
+      - name: Checkout do repositório
         uses: actions/checkout@v3
 
-      - name: Install Terraform
-        uses: hashicorp/setup-terraform@v3
+      - name: Configurar o Terraform
+        uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.12.2
+          terraform_version: 1.5.7
 
-      - name: Terraform initialization
+      - name: Inicializar o Terraform
         run: terraform init
 
-      - name: Format and Validate
-        run: terraform fmt && terraform validate
-
-      - name: Run Terraform Plan
+      - name: Executar ação condicional do Terraform
         run: |
-          terraform plan -out=tfplan \
-            -var='cidr_block=10.0.0.0/16' \
-            -var='project_name=my-project' \
-            -var='region=us-east-1' \
-            -var='tags={ Department = "DevOps", Organization = "Infrastructure and Operations", Project = "EKS", Environment = "Development" }'
-
-      - name: Apply Terraform Apply
-        run: terraform apply -auto-approve tfplan
+          if [ "${{ github.event.inputs.action }}" = "destroy" ]; then
+            echo " Executando terraform destroy..."
+            terraform destroy -auto-approve
+          else
+            echo " Executando terraform apply..."
+            terraform plan -out=tfplan
+            terraform apply -auto-approve tfplan
+          fi
