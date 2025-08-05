@@ -26,17 +26,17 @@ jobs:
       - name: Pre Build
         run:  terraform fmt && terraform validate 
 
-      - name: Deploy  
-        run:  terraform plan \
-          -var='cidr_block=10.0.0.0/16' \
-          -var='project_name=meu-projeto' \
-          -var='region=us-east-1' \
-          -var='tags={
-            Department = "Devops",
-            Organization = "Infrastructure and Operations",
-            Project = "EKS",
-            Environment = "Development"
-          '
+      - name: Terraform Plan
+        run: |
+          terraform plan \
+            -var='cidr_block=10.0.0.0/16' \
+            -var='project_name=meu-projeto' \
+            -var='region=us-east-1' \
+            -var='tags={ Department = "Devops", Organization = "Infrastructure and Operations", Project = "EKS", Environment = "Development" }'
+      
+      - name: Terraform Apply
+        run: |
+          terraform apply -auto-approve
 
 
 
