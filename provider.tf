@@ -5,6 +5,8 @@ terraform {
       version = "6.6.0"
     }
 
+
+
     kubernetes = {
       source  = "hashicorp/kubernetes"
       version = "2.38.0"
@@ -18,12 +20,12 @@ terraform {
 
   }
 
-  backend "s3" {
-    bucket = "bucket-s3-state"
-    key    = "dev/terraform.tfstate"
-    region = "us-east-1"
-  }
 
+
+}
+
+provider "aws" {
+  region = var.region
 }
 
 
