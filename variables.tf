@@ -13,7 +13,7 @@ variable "project_name" {
 
 variable "region" {
   type        = string
-  description = "AWS region to create te resources"
+  description = "AWS region to create the resources"
 }
 
 
