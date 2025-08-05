@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Escolha a ação do Terraform'
+        description: 'Choose the action'
         required: true
         default: apply
         type: choice
