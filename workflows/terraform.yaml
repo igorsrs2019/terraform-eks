@@ -1,0 +1,43 @@
+name: Terraform Pipeline
+
+on:
+  push:
+    branches:
+  pull_request:
+    branches:
+      - main
+jobs:
+  terraform:
+    name: Terraform Workflow
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code Checkout 
+        uses: actions/checkout@v3
+
+      - name: Terraform installation and configuration 
+        uses: hashicorp/setup-terraform@v4
+        with: 
+          terraform_version: Terraform v1.12.2
+      
+      - name: Initialize Terraform   
+        run: terraform init
+
+      - name: Pre Build
+        run:  terraform fmt && terraform validate 
+
+      - name: Deploy  
+        run:  terraform plan \
+          -var='cidr_block=10.0.0.0/16' \
+          -var='project_name=meu-projeto' \
+          -var='region=us-east-1' \
+          -var='tags={
+            Department = "Devops",
+            Organization = "Infrastructure and Operations",
+            Project = "EKS",
+            Environment = "Development"
+          }'
+
+
+
+    
