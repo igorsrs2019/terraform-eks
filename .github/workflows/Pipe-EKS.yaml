@@ -1,11 +1,11 @@
-name: Terraform Pipeline
+name: Terraform Cluster EKS
 
 on:
   workflow_dispatch: 
 
 jobs:
   terraform:
-    name: Terraform Workflow
+    name: Workflow Terraform 
     runs-on: ubuntu-latest
 
     env:
