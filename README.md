@@ -30,7 +30,7 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cidr_block"></a> [cidr\_block](#input\_cidr\_block) | Netowrking CIDR block to be used for the VPC | `string` | n/a | yes |
-| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | project name to be used to name the resources (Name Tag) | `string` | n/a | yes |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Project name to be used to name the resources (Name Tag) | `string` | n/a | yes |
 
 ## Outputs
 
