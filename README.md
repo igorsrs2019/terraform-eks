@@ -1,4 +1,31 @@
-Project Terraform + EKS
+📦 EKS Cluster Deployment with Terraform – Project Summary
+
+This project automates the deployment of an Amazon EKS (Elastic Kubernetes Service) cluster using Terraform. The infrastructure is designed with scalability and security in mind, leveraging multiple providers and a modular approach.
+🔧 Key Components:
+
+    Terraform is used as the Infrastructure as Code (IaC) tool to provision and manage resources.
+
+    AWS Provider handles the creation of core infrastructure such as VPC, subnets, and EKS cluster.
+
+    HELM Provider is used to deploy Helm charts into the Kubernetes cluster.
+
+    Kubernetes Provider manages Kubernetes resources directly from Terraform.
+
+🌐 Network Architecture:
+
+    2 Public Subnets: Dedicated to the EKS control plane and load balancers.
+
+    2 Private Subnets: Reserved for worker nodes to ensure secure internal communication.
+
+🚀 Deployment Highlights:
+
+    Fully automated provisioning of the EKS cluster.
+
+    Integration with Helm for package management.
+
+    Secure and isolated networking setup using public/private subnet segmentation.
+
+    Modular and reusable Terraform codebase for easy maintenance and scalability.
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
