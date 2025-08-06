@@ -22,10 +22,9 @@ module "eks_managed_node_group" {
   subnet_private_1a = module.eks_network.subnet_priv_1a
   subnet_private_1b = module.eks_network.subnet_priv_1b
   tags              = var.tags
-  /*instance_type     = var.instance_type
-  ami_type          = var.ami_type
+  instance_types    = var.instance_types
   capacity_type     = var.capacity_type
-*/
+
 
 
 }
@@ -36,4 +35,9 @@ module "eks_aws_load_balancer_controller" {
   tags         = var.tags
   oidc         = module.eks_cluster.oidc
   cluster_name = module.eks_cluster.cluster_name
+
+
+  depends_on = [
+    module.eks_managed_node_group
+  ]
 }

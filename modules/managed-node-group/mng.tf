@@ -1,5 +1,7 @@
 resource "aws_launch_template" "eks_node_template" {
-  name_prefix = "eks_node_template"
+  name_prefix    = "eks_node_template"
+
+ 
 
 
   metadata_options {
@@ -12,9 +14,10 @@ resource "aws_launch_template" "eks_node_template" {
 resource "aws_eks_node_group" "eks_mgn_node_group" {
   cluster_name    = var.cluster_name
   node_group_name = "${var.project_name}-nodegroup"
-  instance_types  = ["m7i-flex.large"]
-  capacity_type   = "SPOT"
-  node_role_arn   = aws_iam_role.eks_mng_role.arn
+
+  instance_types  = var.instance_types
+  capacity_type = var.capacity_type
+  node_role_arn = aws_iam_role.eks_mng_role.arn
 
   launch_template {
     id      = aws_launch_template.eks_node_template.id

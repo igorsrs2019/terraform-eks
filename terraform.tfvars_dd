@@ -1,5 +1,0 @@
-cidr_block   = "10.0.0.0/16"
-project_name = "eksdevelopment"
-//capacity_type = SPOT
-//instance_types = t3.micro
-//ami_type      = "ami-020cba7c55df1f615"

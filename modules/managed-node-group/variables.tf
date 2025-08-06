@@ -27,24 +27,16 @@ variable "cluster_name" {
   type        = string
   description = "EKS cluster name to create MGN"
 }
-/*
-variable "instance_type" {
-  type        = string
-  description = "Type of instance in Node"
+
+variable "instance_types" {
+  type        =  list (string)
+  description = "Instance type used for compute nodes"
 }
-
-
-
 
 variable "capacity_type" {
   type        = string
-  description = "Capacity type Spot/Demand"
+  description = "Node capacity type: ON_DEMAND, SPOT, or CAPACITY_BLOCK"
 }
 
 
-variable "ami_type" {
-  type        = string
-  description = "Type of S.O"
-}
-*/
 
