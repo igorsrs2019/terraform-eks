@@ -7,9 +7,9 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-| <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.7.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 3.0.2 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.38.0 |
 
 ## Modules
 
@@ -33,7 +33,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | EKS cluster name | `string` | n/a | yes |
 | <a name="input_oidc"></a> [oidc](#input\_oidc) | HTTPS URL from OIDC provider of the EKS cluster | `string` | n/a | yes |
-| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | project name to be used to name the resources (Name Tag) | `string` | n/a | yes |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | project name to be used to name the resources (Name tag) | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be added to AWS resources | `map(any)` | n/a | yes |
 
 ## Outputs
