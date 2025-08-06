@@ -29,10 +29,12 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cidr_block"></a> [cidr\_block](#input\_cidr\_block) | Netowrking CIDR block to be used for the VPC | `string` | n/a | yes |
-| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Project name to be used to name the resources (Name Tag) | `string` | n/a | yes |
-| <a name="input_region"></a> [region](#input\_region) | AWS region to create the resources | `string` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all AWS resources | `map(any)` | n/a | yes |
+| <a name="input_capacity_type"></a> [capacity\_type](#input\_capacity\_type) | Node capacity type: ON\_DEMAND, SPOT, or CAPACITY\_BLOCK | `string` | n/a | yes |
+| <a name="input_cidr_block"></a> [cidr\_block](#input\_cidr\_block) | Networking CIDR block for the VPC | `string` | n/a | yes |
+| <a name="input_instance_types"></a> [instance\_types](#input\_instance\_types) | Instance type used for compute nodes | `list (string)` | n/a | yes |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Name of the project to tag AWS resources | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | AWS region where the resources will be created | `string` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | Map of tags to apply to all AWS resources | `map(any)` | n/a | yes |
 
 ## Outputs
 
